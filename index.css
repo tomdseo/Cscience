@@ -1,0 +1,577 @@
+body {
+    background-image: url(http://cscience.club/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Georgia, Verdana, sans-serif;
+}
+
+/*both sides of webpage*/
+
+#whole {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/*left side of webpage*/
+
+.left {
+    float: left;
+    width: 70%;
+    height: 100%;
+    background-color: whitesmoke;
+    opacity: 0.94;
+    filter:alpha(opacity=80); /* pre IE9 browsers */
+    border: black 2px solid;
+    color: black;
+}
+
+/*right side of webpage*/
+
+.right {
+    float: left;
+    width: 29.3%;
+    height: 100%;
+    border: black 2px solid;
+    opacity: 0.94;
+    filter:alpha(opacity=80); /* pre IE9 browsers */
+}
+
+/*menu*/
+
+@import url(https://fonts.googleapis.com/css?family=Berkshire+Swash|Quicksand:400,700);
+@use cssnext;
+
+:root {
+  --color-primary: #3F51B5;
+  --color-dark: #303F9F;
+  --color-accent: #00BCD4;
+  --color-dark-gray: #212121;
+  --color-med-gray: #727272;
+}
+
+/** LAYOUT STYLES **/
+
+#logo {
+  font-family: "Impact";
+  font-size: 2.5rem;
+    
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  z-index: 3;
+  height: 12%;
+}
+
+.main-header {
+  height: 12rem;
+  display: flex;
+}
+
+.main-header__content {
+  height: 12rem;
+  flex: 1;
+}
+
+.menu-button {
+  height: 50%;
+  width: 6rem;
+  background: var(--color-primary);
+  color: #FFF;
+  position: relative;
+  flex: 0.25;
+}
+
+
+/** HEADER PERSPECTIVE & TRANSFORM **/
+
+.main-header__perspective {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  perspective: 1100px;
+  perspective-origin: 50% 0;
+  z-index: 1;
+}
+
+.main-header__front,
+.main-header__bottom {
+  height: 50%;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  transition: all 0.5s;
+  overflow: hidden;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.main-header__front {
+  background: var(--color-primary);
+  color: #FFF;
+  z-index: 2;
+  transform-origin: center bottom;
+  transform: translateY(0%) rotateX(0deg);
+}
+
+.main-header__bottom {
+  background: var(--color-dark);
+  transform-origin: center top;
+  z-index: 1;
+  transform: rotateX(-90deg);
+  transition: transform 0.5s;
+  position: absolute;
+  top: 50%;
+}
+
+.main-header--rotate .main-header__front {
+  transform: translateY(-100%) rotateX(90deg);
+}
+
+.main-header--rotate .main-header__bottom {
+  top: 50%;
+  transition: transform 0.5s;
+  transform: rotateX(0deg) translateY(-100%);
+}
+
+.main-header__menu {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.main-header__menu a {
+  display: inline-block;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: "Quicksand";
+  font-weight: 400;
+  flex: 0.25;
+}
+
+.main-header__menu a:hover {
+  color: yellow; 
+}
+
+span.current {
+  color: yellow;
+  font-size: 1.2rem;
+  font-family: "Quicksand";
+  font-weight: 400;
+  flex: 0.25;
+  cursor: default;
+  font-weight: bold;
+}
+
+/** "HAMBURGER" MENU BUTTON **/
+
+.menu-button:before {
+  content: '';
+  background: var(--color-dark);
+  display: block;
+  height: 100%;
+  width: 0.75rem;
+  position: absolute;
+  left: -0.75rem; 
+  top: 0;
+  z-index: 0;
+}
+
+.menu-button__button {
+  width: 3rem;
+  height: 2.25rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-button__button span,
+.menu-button__button:before,
+.menu-button__button:after {
+  display: block;
+  position: absolute;
+  height: .375rem;
+  width: 100%;
+  background: #FFF;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.menu-button__button:before {
+  content: '';
+  top: 0px;
+}
+
+.menu-button__button span {
+  top: .9375rem;
+}
+
+.menu-button__button:after {
+  content: '';
+  top: 1.875rem;
+}
+
+.menu-button__button.menu-button__button--is-active:before {
+  top: .9375rem;
+  transform: rotate(-135deg);
+}
+
+.menu-button__button.menu-button__button--is-active span {
+  opacity: 0;
+  left: 60px;
+}
+
+.menu-button__button.menu-button__button--is-active:after {
+  top: .9375rem;
+  transform: rotate(135deg);
+}
+
+
+/*menu*/
+
+
+p {
+    width: 700px;
+    height: 50px;
+    text-decoration-style: double;
+    cursor: default;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+h1 {
+    cursor: default;
+}
+
+h2 {
+    cursor: default;
+}
+
+
+/*Blinking Spacebar*/
+    
+/* Standard (Mozilla) */
+@keyframes blink { from { opacity: 1; } to { opacity: 0; } }
+/* Chrome & Safari */
+@-webkit-keyframes blink { from { opacity: 1; } to { opacity: 0; } }
+blink { -webkit-animation: blink 800ms infinite; animation: blink 800ms infinite; }
+
+/*Blinking Spacebar*/
+
+iframe {
+    width: 650px;
+    height: 350px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+div[class*=box] {
+	height: 33.33%;
+	width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-1 { background-color: #FF6766; }
+.box-2 { background-color: #3C3C3C; }
+.box-3 { background-color: #66A182; }
+
+.btn {
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	width: 250px;
+	cursor: pointer;
+}
+
+/* 
+========================
+      BUTTON ONE
+========================
+*/
+.btn-one {
+	color: #FFF;
+	transition: all 0.3s;
+	position: relative;
+}
+.btn-one span {
+	transition: all 0.3s;
+}
+.btn-one::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(255,255,255,0.1);
+	transition: all 0.3s;
+}
+
+.btn-one:hover::before {
+	opacity: 0 ;
+	transform: scale(0.5,0.5);
+}
+.btn-one::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border: 1px solid rgba(255,255,255,0.5);
+	transform: scale(1.2,1.2);
+}
+.btn-one:hover::after {
+	opacity: 1;
+	transform: scale(1,1);
+}
+
+
+/* 
+========================
+      BUTTON TWO
+========================
+*/
+.btn-two {
+	color: #FFF;
+	transition: all 0.5s;
+	position: relative;	
+}
+.btn-two span {
+	z-index: 2;	
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;	
+}
+.btn-two::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(255,255,255,0.1);
+	transition: all 0.3s;
+}
+.btn-two::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border: 1px solid rgba(255,255,255,0.5);
+	transform: scale(1.2,1.2);
+}
+.btn-two:hover::before {
+  opacity: 0 ;
+	transform: scale(0.5,0.5);
+}
+.btn-two:hover::after {
+  opacity: 1;
+	transform: scale(1,1);
+}
+
+
+/* 
+========================
+      BUTTON THREE
+========================
+*/
+.btn-three {
+	color: #FFF;
+	transition: all 0.5s;
+	position: relative;
+}
+
+.btn-three::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(255,255,255,0.1);
+	transition: all 0.3s;
+}
+.btn-three:hover::before {
+	opacity: 0 ;
+	transform: scale(0.5,0.5);
+}
+.btn-three::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border: 1px solid rgba(255,255,255,0.5);
+	transform: scale(1.2,1.2);
+}
+.btn-three:hover::after {
+	opacity: 1;
+	transform: scale(1,1);
+}
+
+a {
+    text-decoration: none;
+}
+/* Email Form */
+
+section {
+    margin-top: 50px;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.contact1 label {
+  width: 49%;
+  margin-right: 2%;
+  margin-left: 0%;
+  float: left;
+}
+
+.contact2 label {
+  width: 49%;
+  margin-right: 0%;
+  float: left;
+}
+
+.contactinfo {
+  width: 100%;
+}
+
+span.contact {
+  display: block;
+  font-size: 18px;
+}
+
+input {
+  border: 2px solid gray;
+  font-size: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border: 2px solid gray;
+  font-size: 15px;
+}
+
+input:focus {
+  border: 2px ridge yellow;
+  outline: none;
+}
+
+textarea:focus {
+  border: 2px ridge yellow;
+  padding: 2px;
+  outline: none;
+}
+
+.send {
+  width: 70%;
+  background-color: white;
+}
+
+.send:hover {
+  border: 2px ridge yellow;
+  color: black;
+  cursor: pointer;
+}
+
+/* Instagram Button */
+
+.social-icons {
+    margin: 0 auto;
+    /* You just need to change the width and height
+    of your div here.
+    The size of the images will adapt automatically.
+    Make sure that the width is 5 times the height
+    for better results.*/
+    width: 200px;
+    height: 200px;
+    position: relative;
+    float: left;
+    margin-left: 120px;
+}
+
+
+.social-icons .social-icons-image {
+    display: inline-block;
+    position: absolute;
+    width: 33%;
+    height: auto;
+    z-index: 2;
+    opacity: 1;
+    transition: all .5s;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.social-icons .social-icons-image a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.social-icons img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.social-icons a:hover img {
+    width: 110%;
+    height: auto;
+    margin: -5%;
+}
+
+.social-icons .social-icons-image:nth-child(5) {
+    left: 56.25%;   /*(nth-child(4).left + (nth-child(4).width- 3*(50% * 20%)/4)*/
+    top: 25%; /*((100%-50%)/2)*/
+    z-index: 0;
+    width: 10%; /*(50% * 20%)*/
+    height: auto;
+    opacity: .5;
+}
+
+
+
